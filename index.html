@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Arte</title>
+    <style>
+        /* Estilos generales */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .container { max-width: 1200px; margin: auto; padding: 20px; }
+        header, footer { background-color: #000; color: white; padding: 10px 0; text-align: center; }
+        nav { background: #444; padding: 10px 0; }
+        nav a { color: white; text-decoration: none; padding: 0 15px; }
+        nav a:hover { text-decoration: underline; }
+        .gallery { display: flex; flex-wrap: wrap; justify-content: space-between; }
+        .gallery img { width: 30%; margin-bottom: 15px; }
+        .contact-form { width: 300px; margin: auto; }
+        .contact-form label, .contact-form input, .contact-form textarea { display: block; width: 100%; margin-bottom: 10px; }
+        .contact-form input, .contact-form textarea { padding: 5px; }
+        .contact-form button { background-color: #5cb85c; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+        .contact-form button:hover { background-color: #4cae4c; }
+
+        /* Estilo base para las imágenes */
+        .container.gallery {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container.gallery img {
+            width: 350px;
+            height: 350px;
+            transition: transform 0.3s ease; /* Transición de escala */
+        }
+
+        /* Efecto de escala al pasar el mouse sobre la imagen */
+        .container.gallery img:hover {
+            transform: scale(1.2); /* Escala aumentada */
+        }
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Galería Artística</h1>
+</header>
+
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+<div id="inicio" class="container">
+    <h2>Bienvenidos a nuestra galería de fotos</h2>
+    <p>Descubramos imagenes artisticas.</p>
+    <img src="Arte1.png" alt="Img Inicio">
+
+</div>
+
+<div id="galeria" class="container gallery">
+    <!-- Aquí irían las imágenes de las artes, por ejemplo: -->
+    <img src="Arte2.png" alt="ART 1">
+    <img src="Arte3.png" alt="ART 2">
+    <img src="Arte4.png" alt="ART 3">
+    <!-- Asegúrate de reemplazar 'src' con las rutas correctas a tus imágenes -->
+</div>
+
+
+<div id="contacto" class="container">
+    <h2>Contacto</h2>
+    <form class="contact-form">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<footer>
+    <p>© 2024 Galería de Arte F.A</p>
+</footer>
+
+<script>
+    // Esperar a que el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtener todos los enlaces del navbar y los divs de las secciones
+        var navLinks = document.querySelectorAll('nav a');
+        var sections = document.querySelectorAll('.container');
+
+        // Función para ocultar todas las secciones
+        function hideAllSections() {
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+        }
+
+        // Función para mostrar la sección seleccionada
+        function showSection(sectionId) {
+            hideAllSections();
+            document.querySelector(sectionId).style.display = 'block';
+        }
+
+        // Inicialmente ocultar todas las secciones excepto la de inicio
+        hideAllSections();
+        document.querySelector('#inicio').style.display = 'block';
+
+        // Agregar evento click a cada enlace del navbar
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var sectionId = this.getAttribute('href');
+                showSection(sectionId);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
